@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Appathon2016</string>
+    <string name="title_activity_volunteer_sign_up">VolunteerSignUpActivity</string>
 </resources>

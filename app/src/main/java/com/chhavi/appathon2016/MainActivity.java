@@ -3,11 +3,13 @@ package com.chhavi.appathon2016;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,14 +36,14 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         setContentView(R.layout.activity_main);
         textToSpeech = new TextToSpeech(getApplicationContext(), this);
         //txtSpeechInput = (TextView)findViewById(R.id.speechinput);
-     //   checkTTS();
+        //   checkTTS();
 
-       // promptSpeechInput();
+        // promptSpeechInput();
 
-       // speaker.allow(true);
+        // speaker.allow(true);
 
 
-      //  speaker.speak(text);
+        //  speaker.speak(text);
 
 /*        textToSpeech.setOnUtteranceProgressListener(new UtteranceProgressListener() {
             @Override
@@ -63,6 +65,20 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
         volunteerCV = (CardView) findViewById(R.id.card_view_volunteer);
         blindCV = (CardView) findViewById(R.id.card_view_blind);
+        volunteerCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, VolunteerSignUpActivity.class);
+                StartActivity(i);
+            }
+        });
+        blindCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, UserInteractionActivity.class);
+                StartActivity(i);
+            }
+        });
 
     }
 
@@ -73,12 +89,12 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     }
 
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
-       // speaker.destroy();
+        // speaker.destroy();
     }
+
     private void convertTextToSpeech(String text) {
         //  String text = inputText.getText().toString();
         if (null == text || "".equals(text)) {
@@ -103,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             }
         });*/
     }
+
     @Override
     public void onInit(int status) {
         if (status == TextToSpeech.SUCCESS) {
@@ -126,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                                 Toast.makeText(MainActivity.this, "asdd", Toast.LENGTH_LONG).show();
                                 promptSpeechInput();
                                 //TODO shift this code to success of prompt speech and if input is help wanted
-                                startActivity(new Intent(MainActivity.this, UserInteractionActivity.class));
+                                //startActivity(new Intent(MainActivity.this, UserInteractionActivity.class));
 
                             }
                         });
@@ -134,11 +151,11 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                     }
                 });
 
-        HashMap<String, String> params = new HashMap<String, String>();
+                HashMap<String, String> params = new HashMap<String, String>();
 
-        params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID,"stringId");
-               // convertTextToSpeech("Hello and welcome, would you like to register as Volunteer or seak assistance? Say out loud Volunteer or Help according to your choice after the beep");
-               textToSpeech.speak("Hello and welcome, would you like to register as Volunteer or seak assistance? Say out loud Volunteer or Help according to your choice after the beep", TextToSpeech.QUEUE_FLUSH, params);
+                params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "stringId");
+                // convertTextToSpeech("Hello and welcome, would you like to register as Volunteer or seak assistance? Say out loud Volunteer or Help according to your choice after the beep");
+                textToSpeech.speak("Hello and welcome, would you like to register as Volunteer or seak assistance? Say out loud Volunteer or Help according to your choice after the beep", TextToSpeech.QUEUE_FLUSH, params);
 
             }
 
@@ -147,7 +164,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             Log.e("error", "Initilization Failed!");
         }
     }
-
 
 
     private void promptSpeechInput() {
@@ -177,10 +193,14 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                     ArrayList<String> result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     //txtSpeechInput.setText(result.get(0));
-                    if (result.get(0).equalsIgnoreCase("volunteer")){
+                    if (result.get(0).equalsIgnoreCase("volunteer")) {
                         volunteerCV.setCardBackgroundColor(getResources().getColor(R.color.cardview_selected));
-                    } else if (result.get(0).equalsIgnoreCase("blind")){
+                        Intent i = new Intent(MainActivity.this, VolunteerSignUpActivity.class);
+                        StartActivity(i);
+                    } else if (result.get(0).equalsIgnoreCase("blind")) {
                         blindCV.setCardBackgroundColor(getResources().getColor(R.color.cardview_selected));
+                        Intent i = new Intent(MainActivity.this, UserInteractionActivity.class);
+                        StartActivity(i);
                     } else {
                         volunteerCV.setCardBackgroundColor(getResources().getColor(android.R.color.white));
                         blindCV.setCardBackgroundColor(getResources().getColor(android.R.color.white));
@@ -195,4 +215,15 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
         }
     }
+
+    public void StartActivity(final Intent intent) {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(intent);
+            }
+        }, 100);
+    }
+
 }
