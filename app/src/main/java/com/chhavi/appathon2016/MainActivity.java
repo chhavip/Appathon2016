@@ -119,6 +119,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                                 //UI changes
                                 Toast.makeText(MainActivity.this, "asdd", Toast.LENGTH_LONG).show();
                                 promptSpeechInput();
+                                //TODO shift this code to success of prompt speech and if input is help wanted
+                                startActivity(new Intent(MainActivity.this, UserInteractionActivity.class));
 
                             }
                         });
