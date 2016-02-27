@@ -2,11 +2,11 @@ package com.chhavi.appathon2016;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
-import android.speech.tts.UtteranceProgressListener;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,12 +26,14 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     TextToSpeech textToSpeech;
     TextView txtSpeechInput;
 
+    private CardView volunteerCV, blindCV;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textToSpeech = new TextToSpeech(getApplicationContext(), this);
-        txtSpeechInput = (TextView)findViewById(R.id.speechinput);
+        //txtSpeechInput = (TextView)findViewById(R.id.speechinput);
      //   checkTTS();
 
        // promptSpeechInput();
@@ -58,6 +60,10 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
             }
         });*/
+
+        volunteerCV = (CardView) findViewById(R.id.card_view_volunteer);
+        blindCV = (CardView) findViewById(R.id.card_view_blind);
+
     }
 
     private void checkTTS() {
@@ -168,7 +174,19 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
                     ArrayList<String> result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    txtSpeechInput.setText(result.get(0));
+                    //txtSpeechInput.setText(result.get(0));
+                    if (result.get(0).equalsIgnoreCase("volunteer")){
+                        volunteerCV.setCardBackgroundColor(getResources().getColor(R.color.cardview_selected));
+                    } else if (result.get(0).equalsIgnoreCase("blind")){
+                        blindCV.setCardBackgroundColor(getResources().getColor(R.color.cardview_selected));
+                    } else {
+                        volunteerCV.setCardBackgroundColor(getResources().getColor(android.R.color.white));
+                        blindCV.setCardBackgroundColor(getResources().getColor(android.R.color.white));
+                        Toast.makeText(getApplicationContext(),
+                                "wrong choice :'( ",
+                                Toast.LENGTH_SHORT).show();
+                        promptSpeechInput();
+                    }
                 }
                 break;
             }
