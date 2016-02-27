@@ -1,4 +1,4 @@
-package com.chhavi.appathon2016;
+package com.chhavi.appathon2016.blind;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.chhavi.appathon2016.R;
 
 import java.util.HashMap;
 import java.util.Locale;

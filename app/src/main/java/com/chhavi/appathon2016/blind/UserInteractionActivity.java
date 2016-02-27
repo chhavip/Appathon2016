@@ -1,9 +1,11 @@
-package com.chhavi.appathon2016;
+package com.chhavi.appathon2016.blind;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.LinearLayout;
+
+import com.chhavi.appathon2016.R;
 
 import in.championswimmer.sfg.lib.SimpleFingerGestures;
 

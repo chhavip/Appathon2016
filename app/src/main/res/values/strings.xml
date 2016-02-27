@@ -1,4 +1,10 @@
 <resources>
-    <string name="app_name">Appathon2016</string>
-    <string name="title_activity_volunteer_sign_up">VolunteerSignUpActivity</string>
+    <string name="app_name">Appathon 2016</string>
+    <string name="title_activity_volunteer_sign_up">Sign Up</string>
+    <string name="title_activity_volunteer_main">Volunteer Dashboard</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
