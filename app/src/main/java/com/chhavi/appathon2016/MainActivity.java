@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
                 params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "stringId");
                 // convertTextToSpeech("Hello and welcome, would you like to register as Volunteer or seak assistance? Say out loud Volunteer or Help according to your choice after the beep");
-                textToSpeech.speak("Hello and welcome, would you like to register as Volunteer or seak assistance? Say out loud Volunteer or Help according to your choice after the beep", TextToSpeech.QUEUE_FLUSH, params);
+                textToSpeech.speak("Hello and welcome, would you like to register as Volunteer or seak assistance? Say out loud Volunteer or Help according to your choice", TextToSpeech.QUEUE_FLUSH, params);
 
             }
 
