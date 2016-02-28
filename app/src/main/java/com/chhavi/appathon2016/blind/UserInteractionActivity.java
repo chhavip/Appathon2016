@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.chhavi.appathon2016.DemoCallActivity;
 import com.chhavi.appathon2016.Extras.OnSwipeTouchListener;
 import com.chhavi.appathon2016.R;
+import com.chhavi.appathon2016.volunteer.CallActivity;
 import com.quickblox.users.model.QBUser;
 import com.quickblox.videochat.webrtc.QBRTCTypes;
 
@@ -98,7 +99,33 @@ public class UserInteractionActivity extends AppCompatActivity implements TextTo
 
             public void onSwipeUp() {
 
+
+                Toast.makeText(UserInteractionActivity.this, "Up", Toast.LENGTH_SHORT).show();
+                //TODO connect to call in swipe up
                 startActivity(new Intent(UserInteractionActivity.this, DemoCallActivity.class));
+             /*   QBRTCTypes.QBConferenceType qbConferenceType = QBRTCTypes.QBConferenceType.QB_CONFERENCE_TYPE_VIDEO;
+                Map<String, String> userInfo = new HashMap<>();
+                userInfo.put("any_custom_data", "some data");
+                userInfo.put("my_avatar_url", "avatar_reference");
+
+                QBUser user = new QBUser("webrtc_user1", PASSWORD);
+
+                user = new QBUser("webrtc_user9", PASSWORD);
+                user.setId(2436266);
+                user.setFullName("User 9");
+                usersList.add(user);
+                //
+             *//*   user = new QBUser("webrtc_user10", PASSWORD);
+                user.setId(2436269);
+                user.setFullName("User 10");
+                usersList.add(user);*//*
+
+                CallActivity callActivity = new CallActivity();
+
+
+
+                callActivity.addConversationFragmentStartCall(usersList,
+                        qbConferenceType, userInfo);*/
 
             }
 
