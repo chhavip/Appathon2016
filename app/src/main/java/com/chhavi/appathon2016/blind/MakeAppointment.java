@@ -1,10 +1,14 @@
 package com.chhavi.appathon2016.blind;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.chhavi.appathon2016.Extras.OnSwipeTouchListener;
 import com.chhavi.appathon2016.R;
 
 import java.util.HashMap;
@@ -22,6 +26,26 @@ public class MakeAppointment extends AppCompatActivity implements TextToSpeech.O
 
         setContentView(R.layout.make_an_appointment);
         textToSpeech = new TextToSpeech(getApplicationContext(), this);
+
+
+        TextView text = (TextView) findViewById(R.id.textViewTest);
+
+
+        text.setOnTouchListener(new OnSwipeTouchListener(this) {
+
+            @Override
+
+            public void onSwipeUp() {
+
+                Toast.makeText(MakeAppointment.this, "Up", Toast.LENGTH_SHORT).show();
+                //TODO connect to call in swipe up
+                finish();
+
+
+            }
+
+
+        });
 
     }
 
@@ -56,7 +80,7 @@ public class MakeAppointment extends AppCompatActivity implements TextToSpeech.O
 
                 params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "stringId");
                 // convertTextToSpeech("Hello and welcome, would you like to register as Volunteer or seak assistance? Say out loud Volunteer or Help according to your choice after the beep");
-                textToSpeech.speak("Give us a date, start time and end time", TextToSpeech.QUEUE_FLUSH, null);
+                textToSpeech.speak("Give us a date, start time and end time so we can make an appointment for you,  or Swipe up to go back", TextToSpeech.QUEUE_FLUSH, null);
 
             }
         }

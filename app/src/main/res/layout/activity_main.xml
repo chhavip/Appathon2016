@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E0E0E0"
+    android:background="@color/colorAccent"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.chhavi.appathon2016.MainActivity">
 
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="Blind"
+                android:text="User"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
 

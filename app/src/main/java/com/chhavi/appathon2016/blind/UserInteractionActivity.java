@@ -91,6 +91,7 @@ public class UserInteractionActivity extends AppCompatActivity implements TextTo
             public void onSwipeRight() {
 
                 Toast.makeText(UserInteractionActivity.this, "Right", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(UserInteractionActivity.this, RecordVideo.class));
 
                 //TODO make an appointment
             }
@@ -173,7 +174,7 @@ public class UserInteractionActivity extends AppCompatActivity implements TextTo
 
                 params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "stringId");
                 // convertTextToSpeech("Hello and welcome, would you like to register as Volunteer or seak assistance? Say out loud Volunteer or Help according to your choice after the beep");
-                textToSpeech.speak("Swipe Up to connect to volunteer right now, Swipe left to record video, Swipe Right to make an appointment for future assistance", TextToSpeech.QUEUE_FLUSH, params);
+                textToSpeech.speak("Swipe Up to connect to volunteer right now, Swipe right to record video, Swipe left to make an appointment for future assistance", TextToSpeech.QUEUE_FLUSH, params);
 
             }
         }
