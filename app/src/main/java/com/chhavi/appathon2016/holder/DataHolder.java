@@ -30,37 +30,37 @@ public class DataHolder {
 
             QBUser user = new QBUser("webrtc_user1", PASSWORD);
             user.setId(2436251);
-            user.setFullName("User 1");
+            user.setFullName("Yogesh Balan");
             usersList.add(user);
             //
             user = new QBUser("webrtc_user2", PASSWORD);
             user.setId(2436254);
-            user.setFullName("User 2");
+            user.setFullName("Chhavi Gupta");
             usersList.add(user);
             //
             user = new QBUser("webrtc_user3", PASSWORD);
             user.setId(2436257);
-            user.setFullName("User 3");
+            user.setFullName("Cool Aqua");
             usersList.add(user);
             //
             user = new QBUser("webrtc_user4", PASSWORD);
             user.setId(2436258);
-            user.setFullName("User 4");
+            user.setFullName("The GoldenHead");
             usersList.add(user);
             //
             user = new QBUser("webrtc_user5", PASSWORD);
             user.setId(2436259);
-            user.setFullName("User 5");
+            user.setFullName("Ram Kishor");
             usersList.add(user);
             //
             user = new QBUser("webrtc_user6", PASSWORD);
             user.setId(2436262);
-            user.setFullName("User 6");
+            user.setFullName("Bhagwan Das");
             usersList.add(user);
             //
             user = new QBUser("webrtc_user7", PASSWORD);
             user.setId(2436263);
-            user.setFullName("User 7");
+            user.setFullName("Mohd. Khalif");
             usersList.add(user);
             //
             user = new QBUser("webrtc_user8", PASSWORD);

@@ -519,8 +519,8 @@ public class CallActivity extends BaseLogginedUserActivity implements QBRTCClien
     }
 
     public void addConversationFragmentStartCall(List<QBUser> opponents,
-                                                 QBRTCTypes.QBConferenceType qbConferenceType,
-                                                 Map<String, String> userInfo) {
+                                                        QBRTCTypes.QBConferenceType qbConferenceType,
+                                                        Map<String, String> userInfo) {
         QBRTCSession newSessionWithOpponents = rtcClient.createNewSessionWithOpponents(
                 getOpponentsIds(opponents), qbConferenceType);
         SettingsUtil.setSettingsStrategy(opponents,
@@ -534,6 +534,7 @@ public class CallActivity extends BaseLogginedUserActivity implements QBRTCClien
         FragmentExecuotr.addFragment(getFragmentManager(), R.id.fragment_container, fragment, CONVERSATION_CALL_FRAGMENT);
         ringtonePlayer.play(true);
     }
+
 
 
     public static ArrayList<Integer> getOpponentsIds(List<QBUser> opponents) {

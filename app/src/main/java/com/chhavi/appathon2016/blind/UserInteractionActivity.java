@@ -5,20 +5,19 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chhavi.appathon2016.Extras.OnDoubleTapListener;
 import com.chhavi.appathon2016.Extras.OnSwipeTouchListener;
-import com.chhavi.appathon2016.MainActivity;
 import com.chhavi.appathon2016.R;
+import com.chhavi.appathon2016.volunteer.CallActivity;
+import com.quickblox.users.model.QBUser;
+import com.quickblox.videochat.webrtc.QBRTCTypes;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import in.championswimmer.sfg.lib.SimpleFingerGestures;
 
@@ -29,6 +28,8 @@ public class UserInteractionActivity extends AppCompatActivity implements TextTo
 
     TextToSpeech textToSpeech;
     private SimpleFingerGestures mySfg = new SimpleFingerGestures();
+    public static ArrayList<QBUser> usersList;
+    public static final String PASSWORD = "x6Bt0VDy5";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +82,29 @@ public class UserInteractionActivity extends AppCompatActivity implements TextTo
 
                 Toast.makeText(UserInteractionActivity.this, "Up", Toast.LENGTH_SHORT).show();
                 //TODO connect to call in swipe up
+                QBRTCTypes.QBConferenceType qbConferenceType = QBRTCTypes.QBConferenceType.QB_CONFERENCE_TYPE_VIDEO;
+                Map<String, String> userInfo = new HashMap<>();
+                userInfo.put("any_custom_data", "some data");
+                userInfo.put("my_avatar_url", "avatar_reference");
 
+                QBUser user = new QBUser("webrtc_user1", PASSWORD);
+
+                user = new QBUser("webrtc_user9", PASSWORD);
+                user.setId(2436266);
+                user.setFullName("User 9");
+                usersList.add(user);
+                //
+                user = new QBUser("webrtc_user10", PASSWORD);
+                user.setId(2436269);
+                user.setFullName("User 10");
+                usersList.add(user);
+
+                CallActivity callActivity = new CallActivity();
+
+                startActivity(new Intent(UserInteractionActivity.this, CallActivity.class));
+
+                callActivity.addConversationFragmentStartCall(usersList,
+                        qbConferenceType, userInfo);
 
             }
 
