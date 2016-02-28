@@ -133,9 +133,9 @@ public class VolunteerMainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Current(), "Current");
-        adapter.addFragment(new Future(), "Future");
-        adapter.addFragment(new PlaceholderFragment(), "Profile");
+        adapter.addFragment(new Current(), "Current Calls");
+        adapter.addFragment(new Future(), "Future Appointments");
+        adapter.addFragment(new PlaceholderFragment(), "Recorded Videos");
         viewPager.setAdapter(adapter);
     }
 

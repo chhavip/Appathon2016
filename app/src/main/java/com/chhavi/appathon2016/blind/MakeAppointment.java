@@ -70,6 +70,7 @@ public class MakeAppointment extends AppCompatActivity implements TextToSpeech.O
                             public void run() {
                             //    textToSpeech.speak("Give us a date", TextToSpeech.QUEUE_FLUSH, null);
                                 //TODO take user input of date, start time and end time
+                                userInput();
                             }
                         });
 

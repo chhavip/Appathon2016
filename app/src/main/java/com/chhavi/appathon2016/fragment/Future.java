@@ -74,9 +74,13 @@ public class Future extends Fragment {
 
         List<Appointment> appointments = new ArrayList<Appointment>();
 
-        for(int i=0;i<5;i++){
+
             appointments.add(new Appointment("Wednesday, 2nd March", "10 am", "12 pm", "Ronald"));
-        }
+            appointments.add(new Appointment("Wednesday, 2nd March", "1 pm", "2 pm", "Smith"));
+            appointments.add(new Appointment("Thursday, 3rd March", "11 am", "11 30 am", "Rebecca"));
+            appointments.add(new Appointment("Friday, 4th March", "5 pm", "6 pm", "Michael"));
+            appointments.add(new Appointment("Sunday, 6th March", "7 pm", "9 pm", "Philip"));
+
 
         FutureListAdapter adapter = new FutureListAdapter(getActivity(), appointments);
         appointmentList.setAdapter(adapter);
