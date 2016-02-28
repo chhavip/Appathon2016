@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:background="?selectableItemBackground">
+
+    <TextView
+        android:id="@+id/userNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="left"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/shape_oval_blue_green"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="N"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/md_white_1000"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="72dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/loginAs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="16dp"
+            android:text="Help Maurice Moss"
+            android:textColor="@color/titleTextColor" />
+
+        <TextView
+            android:id="@+id/fullName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingRight="16dp"
+            android:text="Oh, four, I mean five, I mean fire!"
+            android:textColor="@color/colorPrimaryDark" />
+
+    </LinearLayout>
+
+</RelativeLayout>
