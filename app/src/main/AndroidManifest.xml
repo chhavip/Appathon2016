@@ -6,18 +6,16 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
-
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
-
 
     <application
         android:allowBackup="true"
@@ -52,25 +50,30 @@
                 android:value="com.chhavi.appathon2016.volunteer.VolunteerSignUpActivity" />
         </activity>
         <activity
-            android:theme="@style/android:Theme.Holo.Light"
             android:name=".volunteer.CallActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/android:Theme.Holo.Light"></activity>
         <activity
             android:name=".volunteer.SettingsActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
-            android:theme="@style/android:Theme.Holo.Light"
             android:name=".volunteer.BaseLogginedUserActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/android:Theme.Holo.Light"></activity>
+        <activity android:name=".blind.MakeAppointment" />
+        <activity android:name=".blind.RecordVideo" />
+        <activity
+            android:name=".DemoCallActivity"
+            android:label="@string/title_activity_demo_call"
+            android:parentActivityName=".blind.UserInteractionActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.chhavi.appathon2016.blind.UserInteractionActivity" />
         </activity>
-        <activity android:name=".blind.MakeAppointment"></activity>
-
-        <activity android:name=".blind.RecordVideo"></activity>
     </application>
 
 </manifest>
