@@ -200,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                         volunteerCV.setCardBackgroundColor(getResources().getColor(R.color.cardview_selected));
                         Intent i = new Intent(MainActivity.this, VolunteerSignUpActivity.class);
                         StartActivity(i);
-                    } else if (result.get(0).equalsIgnoreCase("blind")) {
+                    } else if (result.get(0).equalsIgnoreCase("help")) {
                         blindCV.setCardBackgroundColor(getResources().getColor(R.color.cardview_selected));
                         Intent i = new Intent(MainActivity.this, UserInteractionActivity.class);
                         StartActivity(i);

@@ -3,8 +3,16 @@ package com.chhavi.appathon2016.blind;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.chhavi.appathon2016.Extras.OnDoubleTapListener;
+import com.chhavi.appathon2016.Extras.OnSwipeTouchListener;
+import com.chhavi.appathon2016.MainActivity;
 import com.chhavi.appathon2016.R;
 
 import in.championswimmer.sfg.lib.SimpleFingerGestures;
@@ -26,7 +34,62 @@ public class UserInteractionActivity extends AppCompatActivity {
         //second is left swipe -- record a video for feedback
         //third is right swipr -- book an appointment (for later use)
 
-        mySfg.setOnFingerGestureListener(new SimpleFingerGestures.OnFingerGestureListener() {
+
+        TextView text = (TextView)findViewById(R.id.textViewTest);
+
+
+/*
+        text.setOnTouchListener(new OnDoubleTapListener(this) {
+
+            @Override
+
+            public void onDoubleTap(MotionEvent e) {
+
+                Toast.makeText(UserInteractionActivity.this, "Double Tap", Toast.LENGTH_SHORT).show();
+
+            }
+
+        });*/
+
+        text.setOnTouchListener(new OnSwipeTouchListener(this) {
+
+
+            @Override
+
+            public void onSwipeLeft() {
+
+                Toast.makeText(UserInteractionActivity.this, "Left", Toast.LENGTH_SHORT).show();
+
+                //TODO give option to record video for fututre opinion
+            }
+
+
+
+            @Override
+
+            public void onSwipeUp() {
+
+                Toast.makeText(UserInteractionActivity.this, "Up", Toast.LENGTH_SHORT).show();
+                //TODO connect to call in swipe up
+
+
+            }
+
+
+
+            @Override
+
+            public void onSwipeRight() {
+
+                Toast.makeText(UserInteractionActivity.this, "Right", Toast.LENGTH_SHORT).show();
+
+                //TODO make an appointment
+            }
+
+        });
+
+
+     /*   mySfg.setOnFingerGestureListener(new SimpleFingerGestures.OnFingerGestureListener() {
             @Override
             public boolean onSwipeUp(int i, long l, double v) {
                 return false;
@@ -68,6 +131,6 @@ public class UserInteractionActivity extends AppCompatActivity {
 
         });
 
-        layout.setOnTouchListener(mySfg);
+        layout.setOnTouchListener(mySfg);*/
     }
 }
