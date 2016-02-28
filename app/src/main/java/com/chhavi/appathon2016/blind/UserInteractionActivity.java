@@ -1,5 +1,6 @@
 package com.chhavi.appathon2016.blind;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
@@ -33,7 +34,8 @@ public class UserInteractionActivity extends AppCompatActivity implements TextTo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_interaction);
-        LinearLayout layout = (LinearLayout) findViewById(R.id.linearLayout);
+        getSupportActionBar().hide();
+      //  LinearLayout layout = (LinearLayout) findViewById(R.id.linearLayout);
 
         textToSpeech = new TextToSpeech(getApplicationContext(), this);
 
@@ -69,6 +71,7 @@ public class UserInteractionActivity extends AppCompatActivity implements TextTo
                 Toast.makeText(UserInteractionActivity.this, "Left", Toast.LENGTH_SHORT).show();
 
                 //TODO give option to record video for fututre opinion
+                startActivity(new Intent(UserInteractionActivity.this, MakeAppointment.class));
             }
 
 

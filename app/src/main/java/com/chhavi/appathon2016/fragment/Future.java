@@ -1,13 +1,21 @@
 package com.chhavi.appathon2016.fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
+import com.chhavi.appathon2016.Extras.Appointment;
 import com.chhavi.appathon2016.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,7 +68,54 @@ public class Future extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_future, container, false);
+        View view =  inflater.inflate(R.layout.fragment_future, container, false);
+
+        ListView appointmentList = (ListView)view.findViewById(R.id.appointment_listview);
+
+        List<Appointment> appointments = new ArrayList<Appointment>();
+
+        for(int i=0;i<5;i++){
+            appointments.add(new Appointment("Wednesday, 2nd March", "10 am", "12 pm", "Ronald"));
+        }
+
+        FutureListAdapter adapter = new FutureListAdapter(getActivity(), appointments);
+        appointmentList.setAdapter(adapter);
+
+        return view;
+    }
+
+
+    public class FutureListAdapter extends ArrayAdapter<Appointment>{
+
+        Context context;
+        List<Appointment> appointments;
+        public FutureListAdapter(Context context, List<Appointment> objects) {
+            super(context, 0, objects);
+            this.context = context;
+            this.appointments = objects;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+           View view = LayoutInflater.from(context).inflate(R.layout.appointment_list_item, parent, false);
+
+            Appointment appointment = appointments.get(position);
+            TextView date = (TextView)view.findViewById(R.id.date_text);
+            TextView start_time = (TextView)view.findViewById(R.id.start_text);
+            TextView end_time = (TextView)view.findViewById(R.id.end_text);
+            TextView client_name = (TextView)view.findViewById(R.id.client_text);
+
+            date.setText(appointment.getDate());
+            start_time.setText(appointment.getStart_time());
+            end_time.setText(appointment.getEnd_time());
+            client_name.setText(appointment.getClient_name());
+            return view;
+        }
+
+        @Override
+        public int getCount() {
+            return appointments.size();
+        }
     }
 
 }

@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.chhavi.appathon2016"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -35,4 +35,5 @@ dependencies {
         transitive=true
     }
     compile "com.quickblox:quickblox-android-sdk-videochat-webrtc:$rootProject.qbSdkVersion@aar"
+    compile 'com.pddstudio:starview:1.0.0'
 }

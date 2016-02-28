@@ -67,6 +67,8 @@
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".blind.MakeAppointment"></activity>
+
     </application>
 
 </manifest>
