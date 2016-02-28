@@ -14,14 +14,28 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/textViewTest"
                 android:text="Make an Appointment"
+                android:gravity="center"
+                android:textColor="@color/user_text_colour"
+                android:textSize="24sp"
+                android:scaleType="centerInside"
+                android:padding="64dp"/>
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/user_input_text"
+                android:hint="User Response"
+                android:layout_below="@+id/textViewTest"
                 android:gravity="center"
                 android:textColor="@color/user_text_colour"
                 android:textSize="24sp"

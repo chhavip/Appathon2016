@@ -1,16 +1,21 @@
 package com.chhavi.appathon2016.blind;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chhavi.appathon2016.Extras.OnSwipeTouchListener;
 import com.chhavi.appathon2016.R;
+import com.chhavi.appathon2016.volunteer.VolunteerSignUpActivity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -19,6 +24,14 @@ import java.util.Locale;
  */
 public class MakeAppointment extends AppCompatActivity implements TextToSpeech.OnInitListener {
     TextToSpeech textToSpeech;
+    EditText userInput;
+
+    private final int CHECK_CODE = 0x1;
+    private final int LONG_DURATION = 5000;
+    private final int SHORT_DURATION = 1200;
+
+    private final int REQ_CODE_SPEECH_INPUT = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +39,7 @@ public class MakeAppointment extends AppCompatActivity implements TextToSpeech.O
 
         setContentView(R.layout.make_an_appointment);
         textToSpeech = new TextToSpeech(getApplicationContext(), this);
+        userInput = (EditText)findViewById(R.id.user_input_text);
 
 
         TextView text = (TextView) findViewById(R.id.textViewTest);
@@ -87,5 +101,42 @@ public class MakeAppointment extends AppCompatActivity implements TextToSpeech.O
         }
 
     }
+
+    private void userInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+                "Say Something");
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            Toast.makeText(getApplicationContext(),
+                    "Speech not supported",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case REQ_CODE_SPEECH_INPUT: {
+                if (resultCode == RESULT_OK && null != data) {
+
+                    ArrayList<String> result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    userInput.setText(result.get(0));
+                    textToSpeech.speak("Your request for" + result.get(0) + "has been recorded", TextToSpeech.QUEUE_ADD, null);
+                    //txtSpeechInput.setText(result.get(0));
+
+                    }
+                }
+                break;
+            }
+
+        }
     }
 
