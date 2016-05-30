@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                             @Override
                             public void run() {
                                 //UI changes
-                                Toast.makeText(MainActivity.this, "asdd", Toast.LENGTH_LONG).show();
+
                                 promptSpeechInput();
                                 //TODO shift this code to success of prompt speech and if input is help wanted
                                 //startActivity(new Intent(MainActivity.this, UserInteractionActivity.class));
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
                 params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "stringId");
                 // convertTextToSpeech("Hello and welcome, would you like to register as Volunteer or seak assistance? Say out loud Volunteer or Help according to your choice after the beep");
-                textToSpeech.speak("Hello and welcome, would you like to register as Volunteer or seak assistance? Say out loud Volunteer or Help according to your choice", TextToSpeech.QUEUE_FLUSH, params);
+                textToSpeech.speak("Hello and welcome, would you like to register as Volunteer or seek assistance? Say out loud Volunteer or Help according to your choice", TextToSpeech.QUEUE_FLUSH, params);
 
             }
 

@@ -38,9 +38,10 @@ public class MakeAppointment extends AppCompatActivity implements TextToSpeech.O
         getSupportActionBar().hide();
 
         setContentView(R.layout.make_an_appointment);
-        textToSpeech = new TextToSpeech(getApplicationContext(), this);
+       textToSpeech = new TextToSpeech(getApplicationContext(), this);
         userInput = (EditText)findViewById(R.id.user_input_text);
 
+        promptSpeechInput();
 
         TextView text = (TextView) findViewById(R.id.textViewTest);
 
@@ -76,7 +77,7 @@ public class MakeAppointment extends AppCompatActivity implements TextToSpeech.O
 
                     @Override
                     public void onUtteranceCompleted(String utteranceId) {
-                        Log.e("error", "This Language is not supported");
+
 
                         runOnUiThread(new Runnable() {
 
@@ -84,7 +85,7 @@ public class MakeAppointment extends AppCompatActivity implements TextToSpeech.O
                             public void run() {
                             //    textToSpeech.speak("Give us a date", TextToSpeech.QUEUE_FLUSH, null);
                                 //TODO take user input of date, start time and end time
-                                userInput();
+                                promptSpeechInput();
                             }
                         });
 
@@ -95,14 +96,15 @@ public class MakeAppointment extends AppCompatActivity implements TextToSpeech.O
 
                 params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "stringId");
                 // convertTextToSpeech("Hello and welcome, would you like to register as Volunteer or seak assistance? Say out loud Volunteer or Help according to your choice after the beep");
-                textToSpeech.speak("Give us a date, start time and end time so we can make an appointment for you,  or Swipe up to go back", TextToSpeech.QUEUE_FLUSH, null);
+               // textToSpeech.speak("Give us a date, start time and end time so we can make an appointment for you,  or Swipe up to go back", TextToSpeech.QUEUE_FLUSH, null);
 
             }
         }
 
     }
 
-    private void userInput() {
+
+    private void promptSpeechInput() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                 RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
@@ -129,8 +131,7 @@ public class MakeAppointment extends AppCompatActivity implements TextToSpeech.O
                     ArrayList<String> result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     userInput.setText(result.get(0));
-                    textToSpeech.speak("Your request for" + result.get(0) + "has been recorded", TextToSpeech.QUEUE_ADD, null);
-                    //txtSpeechInput.setText(result.get(0));
+                    textToSpeech.speak("Your appointment for" + result.get(0) + "has been recorded", TextToSpeech.QUEUE_FLUSH, null);
 
                     }
                 }
@@ -139,4 +140,5 @@ public class MakeAppointment extends AppCompatActivity implements TextToSpeech.O
 
         }
     }
+
 
